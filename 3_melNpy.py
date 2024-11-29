@@ -64,15 +64,16 @@ def process_wav_file(wav):
         return
 
     lt = wav.split("\\")
+    pos = lt[5]
     label = lt[6]
     batch = lt[7]
     filename = os.path.basename(wav).replace(".wav", "_mel.npy")
     # filePath = os.path.join(prename, label, filename)
     filePath = ""
     if int(batch) <= 5:
-        filePath = os.path.join(prename, "train", label, filename)
+        filePath = os.path.join(prename,pos, "train", label, filename)
     else:
-        filePath = os.path.join(prename, "val", label, filename)
+        filePath = os.path.join(prename,pos, "val", label, filename)
     # drawspec(mel_spect, filePath)
     dir_name = os.path.dirname(filePath)
     if not os.path.exists(dir_name):

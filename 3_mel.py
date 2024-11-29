@@ -65,6 +65,7 @@ def process_wav_file(wav):
         return
 
     lt = wav.split("\\")
+    pos = lt[5]
     label = lt[6]
     batch = lt[7]
     # n1 = lt[7]
@@ -72,9 +73,9 @@ def process_wav_file(wav):
     # filePath = os.path.join(prename, label, filename)
     filePath = ""
     if int(batch) <= 5:
-        filePath = os.path.join(prename, "train", label, filename)
+        filePath = os.path.join(prename,pos, "train", label, filename)
     else:
-        filePath = os.path.join(prename, "val", label, filename)
+        filePath = os.path.join(prename,pos, "val", label, filename)
     drawspec(mel_spect, filePath)
     print(f"Saved: {filePath}")
 
